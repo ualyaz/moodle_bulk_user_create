@@ -1,0 +1,35 @@
+[
+  {
+    "id": "123213123123123",
+    "username": "password1",
+    "password": "password1",
+    "firstname": "John",
+    "lastname": "CLOUD",
+    "email": "username@com",
+    "role": 5,
+    "isCourseEnroll": false,
+    "isAssignRole": false
+  },
+  {
+    "id": null,
+    "username": "password2",
+    "password": "password2",
+    "firstname": "Jack",
+    "lastname": "JONAS",
+    "email": "username@com",
+    "role": 5,
+    "isCourseEnroll": false,
+    "isAssignRole": false
+  },
+  {
+    "id": null,
+    "username": "password3",
+    "password": "password3",
+    "firstname": "Daniel",
+    "lastname": "POWELL",
+    "email": "username@com",
+    "role": 5,
+    "isCourseEnroll": false,
+    "isAssignRole": false
+  }
+]

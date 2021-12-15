@@ -1,0 +1,68 @@
+﻿@{
+    ViewBag.Title = "Index";
+
+    var createFileStatus = (bool)ViewBag.CreteFile;
+    var FormatedUsersExist = (bool)ViewBag.FormatedUsers;
+}
+<div class="col-lg-6 col-md-6 col-sm-12">
+    <h5>Turkish</h5>
+    <h2>Moodle üzerinde toplu kullanıcı oluşturmak</h2>
+    <span>Eğer kök dizinde <strong>formatedUsers.json</strong> oluşturulmamış ise ve <strong>users.csv</strong> var ise <strong>"Formatlı kullanıcıları oluştur"</strong> butonu ile oluşturabilirsiniz.</span>
+    <ol>
+        <li>Verilen dosyadaki (<strong>.csv</strong>) kullanıcı bilgileri okunur.</li>
+        <li>Veriler okunduktan sonra sınıf yapısına uygun olarak formatlanır. </li>
+        <li>Verilerde yer alan kullanıcı bilgileri ile moodle üzerinde yeni kullanıcı açılır.</li>
+        <li>Kullanıcı açıldıktan sonra gelen <strong>id</strong> bilgisi veri ile eşlenir.</li>
+        <li>Son kullanıcı bilgileri diske yazılır.</li>
+    </ol>
+</div>
+<div class="col-lg-6 col-md-6 col-sm-12">
+    <h5>English</h5>
+    <h2>Creating bulk users on moodle</h2>
+    <span>If <strong>formatedUsers.json</strong>  is not created in the root directory and there is <strong>users.csv</strong>, you can create it with the <strong>"Create formated users"</strong> button.</span>
+    <ol>
+        <li>The (<strong>.csv</strong>) user information in the given file is read.</li>
+        <li>After the data is read, it is formatted according to the class structure.</li>
+        <li>A new user is created on moodle with the user information in the data.</li>
+        <li>After the user is opened, the <strong>id</strong> information is matched with the data.</li>
+        <li>End user information is written to disk</li>
+    </ol>
+</div>
+<div class="clearfix"> </div>
+<div class="col-lg-12 col-md-12 col-sm-12">
+    <br />
+    <p>
+        @if (FormatedUsersExist)
+        {
+            <a href="javascript:;" disabled class="disabled btn btn-default col-lg-4 col-md-4">
+                Formatlı kullanıcı sayısı: (@(ViewBag.FormatedUserCount))
+                <br />
+                Formated users : (@(ViewBag.FormatedUserCount))
+            </a>
+            if ((int)ViewBag.FormatedUserCount > 0)
+            {
+                <a href="/Home/CreatedMoodleUser" class="btn btn-danger col-lg-4 col-md-4">
+                    Moodle'da oluşturulacak kullanıcı sayısı:(@(ViewBag.FormatedUserCount))
+                    <br />
+                    Number of user will create on Moodle:(@(ViewBag.FormatedUserCount))
+                </a>
+            }
+        }
+        else
+        {
+            <a href="/Home/CreateFormatedFile" @(!createFileStatus ? "disabled" : "") class="@(!createFileStatus ? "disabled btn btn-default":"btn btn-success") col-lg-4 col-md-4">
+                Formatlı kullanıcı  sayısı: (@(ViewBag.NonFormatedUserCount))
+                <br />
+                Formated user create : (@(ViewBag.NonFormatedUserCount))
+            </a>
+
+            <a href="javascript:;" disabled class="disabled btn btn-danger col-lg-4 col-md-4">
+                Moodle üzerinde oluşturabileceğiniz kullanıcı sayısı: (@(ViewBag.FormatedUserCount))
+                <br />
+                Number of users you can create on moodle : (@(ViewBag.FormatedUserCount))
+            </a>
+        }
+        <a href="/Home/SyncALLList" class="btn btn-warning col-lg-2 col-md-2">Verileri Eşitle   <br /> Sync Data</a>
+        <a href="/Home/FindNullIds" class="btn btn-info col-lg-2 col-md-2">Boş Id'leri Bul   <br /> Find Null IDs</a>
+    </p>
+</div>
